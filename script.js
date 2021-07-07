@@ -80,7 +80,7 @@
 
 // Object.keys, values, entries
 
-// + 1. Сумма свойств объекта
+// 1. Сумма свойств объекта
 
 // Есть объект salaries с произвольным количеством свойств, содержащих заработные платы.
 // Напишите функцию sumSalaries(salaries), которая возвращает сумму всех зарплат с помощью 
@@ -108,7 +108,7 @@
 
 // ------------------------
 
-// + 2. Подсчёт количества свойств объекта
+// 2. Подсчёт количества свойств объекта
 
 // Напишите функцию count(obj), которая возвращает количество свойств объекта:
 
@@ -134,7 +134,7 @@
 
 // Map и Set
 
-// + 1. Фильтрация уникальных элементов массива
+// 1. Фильтрация уникальных элементов массива
 
 // Допустим, у нас есть массив arr.
 // Создайте функцию unique(arr), которая вернёт массив уникальных, 
@@ -153,6 +153,7 @@
 // P.S. Здесь мы используем строки, но значения могут быть любого типа.
 // P.P.S. Используйте Set для хранения уникальных значений.
 
+// ---------------------
 
 // let values = ["Hare", "Krishna", "Hare", "Krishna",
 //     "Krishna", "Krishna", "Hare", "Hare", ":-O"
@@ -191,11 +192,272 @@
 // alert( aclean(arr) ); // "nap,teachers,ear" or "PAN,cheaters,era"
 // Из каждой группы анаграмм должно остаться только одно слово, не важно какое.
 
-let arr = ["nap", "teachers", "cheaters", "PAN", "ear", "era", "hectares"];
+// let arr = ["nap", "teachers", "cheaters", "PAN", "ear", "era", "hectares"];
 
-const aclean = arr => {
+// const aclean = arr => {
 
-  arr.map()
+//   arr.map()
+// }
+
+// console.log(aclean(arr)); // "nap,teachers,ear" or "PAN,cheaters,era"
+
+//----------------------------------
+
+// Object.keys, values, entries
+
+// 1. Сумма свойств объекта
+// Есть объект salaries с произвольным количеством свойств, содержащих заработные платы.
+// Напишите функцию sumSalaries(salaries), которая возвращает сумму всех зарплат с 
+// помощью метода Object.values и цикла for..of.
+// Если объект salaries пуст, то результат должен быть 0.
+// Например:
+
+// let salaries = {
+//   "John": 100,
+//   "Pete": 300,
+//   "Mary": 250
+// };
+// alert( sumSalaries(salaries) ); // 650
+
+// -----------------------------
+
+// let salaries = {
+//   "John": 100,
+//   "Pete": 300,
+//   "Mary": 250
+// };
+
+// const sumSalaries = salaries => {
+
+//   let sumOfSalaries = 0;
+
+//   for (let value of Object.values(salaries)) {
+//     sumOfSalaries += value;
+//   }
+
+//   return sumOfSalaries;
+// }
+
+// console.log(sumSalaries(salaries)); // 650
+
+// 2. Подсчёт количества свойств объекта
+// Напишите функцию count(obj), которая возвращает количество 
+// свойств объекта:
+
+// let user = {
+//   name: 'John',
+//   age: 30
+// };
+
+// alert( count(user) ); // 2
+// Постарайтесь сделать код как можно короче.
+// P.S. Игнорируйте символьные свойства, подсчитывайте только 
+// «обычные».
+
+// -----------------------------
+
+// let user = {
+//   name: 'John',
+//   age: 30
+// };
+
+// const count = obj => Object.values(obj).length;
+
+// console.log(count(user));
+
+// Деструктурирующее присваивание
+
+// 1. У нас есть объект:
+// let user = {
+//   name: "John",
+//   years: 30
+// };
+// Напишите деструктурирующее присваивание, которое:
+// - свойство name присвоит в переменную name.
+// - свойство years присвоит в переменную age.
+// - свойство isAdmin присвоит в переменную isAdmin (false, если нет такого свойства)
+// Пример переменных после вашего присваивания:
+
+// let user = { name: "John", years: 30 };
+
+// // ваш код должен быть с левой стороны:
+// // ... = user
+
+// alert( name ); // John
+// alert( age ); // 30
+// alert( isAdmin ); // false
+
+// --------------------------------
+
+// let user = { name: "John", years: 30 };
+
+// let { name, years: age, isAdmin = false } = user;
+
+// console.log(name); // John
+// console.log(age); // 30
+// console.log(isAdmin); // false
+
+// ---------------------------
+
+// 2. Максимальная зарплата
+// У нас есть объект salaries с зарплатами:
+
+// let salaries = {
+//   "John": 100,
+//   "Pete": 300,
+//   "Mary": 250
+// };
+// Создайте функцию topSalary(salaries), которая возвращает имя самого 
+// высокооплачиваемого сотрудника.
+
+// Если объект salaries пустой, то нужно вернуть null.
+// Если несколько высокооплачиваемых сотрудников, можно вернуть любого из них.
+// P.S. Используйте Object.entries и деструктурирование, чтобы перебрать пары 
+// ключ/значение.
+
+// ---------------------------
+
+// let salaries = {
+//   "John": 100,
+//   "Pete": 300,
+//   "Mary": 250
+// };
+
+// const topSalary = salaries => {
+
+//   if (Object.entries(salaries).length == 0) {
+//     return null;
+//   }
+
+//   let topWorker;
+//   let topSalary = 0;
+
+//   for (let [worker, value] of Object.entries(salaries)) { // ["John", 100], ["Pete", 300], ["Mary", 250]
+
+//     if (`${value}` > topSalary) {
+//       topSalary = `${value}`;
+//       topWorker = `${worker}`;
+//     }
+//   }
+
+//   return topWorker;
+
+// }
+
+// console.log(topSalary(salaries));
+
+// Дата и время
+
+// 1. Создайте дату
+// Создайте объект Date для даты: 20 февраля 2012 года, 3 часа 12 минут. 
+// Временная зона – местная.
+// Для вывода используйте alert.
+
+// ---------------------------
+
+// console.log(new Date(2012, 1, 20, 3, 12));
+
+//2. Покажите день недели
+// Напишите функцию getWeekDay(date), показывающую день недели в коротком 
+// формате: «ПН», «ВТ», «СР», «ЧТ», «ПТ», «СБ», «ВС».
+// Например:
+// let date = new Date(2012, 0, 3);  // 3 января 2012 года
+// alert( getWeekDay(date) );        // нужно вывести "ВТ"
+
+// ---------------------------
+
+// let date = new Date(2012, 0, 3);  // 3 января 2012 года
+
+// const getWeekDay = date => {
+
+//   let options = {
+//     weekday: 'short',
+//   };
+
+//   return (new Intl.DateTimeFormat('ru-RU', options).format(date)).toUpperCase();
+
+// }
+// console.log(getWeekDay(date)); // нужно вывести "ВТ"
+
+// 3. День недели в европейской нумерации
+// В Европейских странах неделя начинается с понедельника 
+// (день номер 1), затем идёт вторник (номер 2) и так до воскресенья (номер 7). 
+// Напишите функцию getLocalDay(date), которая возвращает «европейский» 
+// день недели для даты date.
+
+// let date = new Date(2012, 0, 3);  // 3 января 2012 года
+// alert( getLocalDay(date) );       // вторник, нужно показать 2
+
+// ---------------------------
+
+// let date = new Date(2012, 0, 3);  // 3 января 2012 года
+
+// const getLocalDay = date => {
+
+//   let europeanWeekday = date.getDay();
+
+//   if (europeanWeekday == 0) {
+//     return 7;
+//   } else {
+//     return europeanWeekday;
+//   }
+// }
+
+// console.log(getLocalDay(date)); // вторник, нужно показать 2
+
+// 4. Какой день месяца был много дней назад?
+// Создайте функцию getDateAgo(date, days), возвращающую число, которое было 
+// days дней назад от даты date.
+// К примеру, если сегодня двадцатое число, то getDateAgo(new Date(), 1) 
+// вернёт девятнадцатое и getDateAgo(new Date(), 2) – восемнадцатое.
+// Функция должна надёжно работать при значении days=365 и больших значениях:
+
+// let date = new Date(2015, 0, 2);
+
+// alert( getDateAgo(date, 1) ); // 1, (1 Jan 2015)
+// alert( getDateAgo(date, 2) ); // 31, (31 Dec 2014)
+// alert( getDateAgo(date, 365) ); // 2, (2 Jan 2014)
+// P.S. Функция не должна изменять переданный ей объект date.
+
+// ---------------------------
+
+// let date = new Date(2015, 0, 2); // 02 Jan 2015
+
+// const getDateAgo = (date, days) => {
+
+//   let newDate = new Date(date);
+
+//   newDate.setDate(newDate.getDate() - days);
+//   return newDate.getDate();
+// }
+
+// console.log(getDateAgo(date, 1)); // 1, (1 Jan 2015)
+// console.log(getDateAgo(date, 2)); // 31, (31 Dec 2014)
+// console.log(getDateAgo(date, 365)); // 2, (2 Jan 2014)
+
+// 5. Последнее число месяца?
+// Напишите функцию getLastDayOfMonth(year, month), возвращающую последнее 
+// число месяца. Иногда это 30, 31 или даже февральские 28/29.
+// Параметры:
+
+// year – год из четырёх цифр, например, 2012.
+// month – месяц от 0 до 11.
+// К примеру, getLastDayOfMonth(2012, 1) = 29 (високосный год, февраль).
+
+// ---------------------------
+
+const getLastDayOfMonth = (year, month) => {
+
+  let newYear = year; // 2012
+  let newMonth = month + 1; // 2
+
+  let nextMonth = new Date(year, month); // Mar 01 2012
+
+  let dateWithLastDay = nextMonth.getDate() - 1; // 
+
+  dateWithLastDay.setDate();
+   .getDate();
 }
 
-console.log(aclean(arr)); // "nap,teachers,ear" or "PAN,cheaters,era"
+
+getLastDayOfMonth(2012, 1);
